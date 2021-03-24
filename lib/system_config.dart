@@ -23,4 +23,6 @@ class SystemConfig {
   static String? getOrNull(String key, {String? defaultValue}) {
     return getProvider().getOrNull(key, defaultValue: defaultValue);
   }
+
+  static bool containsKey(String key) => getProvider().containsKey(key);
 }

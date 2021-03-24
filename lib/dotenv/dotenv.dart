@@ -1,52 +1,33 @@
-/// Loads environment variables from a `.env` file.
-///
-/// ## usage
-///
-/// Once you call [load], the top-level [env] map is available.
-/// You may wish to prefix the import.
-///
-///     import 'package:dotenv/dotenv.dart' show load, env;
-///
-///     void main() {
-///       load();
-///       var x = env['foo'];
-///       // ...
-///     }
-///
-/// Verify required variables are present:
-///
-///     const _requiredEnvVars = const ['host', 'port'];
-///     bool get hasEnv => isEveryDefined(_requiredEnvVars);
 library dotenv;
 
 import 'dart:io';
 
 import 'package:meta/meta.dart';
 
-part 'parser.dart';
+// load functions from parser
+part 'dotenv_parser.dart';
 
+// create in-memory variables store
 var _env = Map<String, String>.from(Platform.environment);
 
-/// A copy of [Platform.environment](dart:io) including variables loaded at runtime from a file.
+// move from platforms env with default vars
 Map<String, String> get env => _env;
 
-/// Overwrite [env] with a new writable copy of [Platform.environment](dart:io).
+// clean the env and set default from platform environment
 Map clean() => _env = Map.from(Platform.environment);
 
-/// True if all supplied variables have nonempty value; false otherwise.
-/// Differs from [containsKey](dart:core) by excluding null values.
-/// Note [load] should be called first.
+// check the variables that defined in .env or platform env
 bool isEveryDefined(Iterable<String> vars) =>
     vars.every((k) => _env[k] != null && (_env[k]?.isNotEmpty ?? false));
 
-/// Read environment variables from [filename] and add them to [env].
-/// Logs to [stderr] if [filename] does not exist.
-void load([String filename = '.env', Parser psr = const Parser()]) {
+// load file .env from project root
+void load([String filename = '.env', DotenvParser psr = const DotenvParser()]) {
   var file = File.fromUri(Uri.file(filename));
   var lines = _verify(file);
   _env.addAll(psr.parse(lines));
 }
 
+// verify file .env
 List<String> _verify(File file) {
   if (file.existsSync()) return file.readAsLinesSync();
   stderr.writeln('[dotenv] Load failed: file not found: $file');

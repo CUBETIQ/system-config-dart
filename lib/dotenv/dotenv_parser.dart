@@ -1,8 +1,6 @@
 part of dotenv;
 
-/// Creates key-value pairs from strings formatted as environment
-/// variable definitions.
-class Parser {
+class DotenvParser {
   static const _singleQuot = "'";
   static const _keyword = 'export';
 
@@ -10,11 +8,9 @@ class Parser {
   static final _surroundQuotes = RegExp(r'''^(['"])(.*)\1$''');
   static final _bashVar = RegExp(r'(?:\\)?(\$)(?:{)?([a-zA-Z_][\w]*)+(?:})?');
 
-  /// [Parser] methods are pure functions.
-  const Parser();
+  // constructor for parser
+  const DotenvParser();
 
-  /// Creates a [Map](dart:core) suitable for merging into [Platform.environment](dart:io).
-  /// Duplicate keys are silently discarded.
   Map<String, String> parse(Iterable<String> lines) {
     var out = <String, String>{};
     lines.forEach((line) {
@@ -79,7 +75,6 @@ class Parser {
 
   bool _isValid(String s) => s.isNotEmpty && s.contains('=');
 
-  /// [null] is a valid value in a Dart map, but the env var representation is empty string, not the string 'null'
   bool _has(Map<String, String> map, String key) =>
       map.containsKey(key) && map[key] != null;
 
