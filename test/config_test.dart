@@ -1,4 +1,5 @@
-import 'package:configurable/configurable.dart' show getConfigOrNull, hasConfigkey;
+import 'package:configurable/configurable.dart'
+    show getConfigOrNull, hasConfigkey;
 import 'package:configurable/simple_configuration_provider.dart';
 import 'package:configurable/system_config.dart';
 import 'package:test/test.dart';
@@ -7,7 +8,7 @@ void main() {
   test('get system config by key', () {
     var key = 'app.name';
     var value = 'CUBETIQ';
-    
+
     // set simple provider
     SystemConfig.setProvider(SimpleConfigurationProvider());
 

@@ -4,7 +4,7 @@ import 'package:test/test.dart';
 void main() {
   test('just call env', () {
     load();
-  
+
     var result = env['app.title'];
 
     expect('CUBETIQ Solution', equals(result));

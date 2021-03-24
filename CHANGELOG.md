@@ -16,3 +16,6 @@
 - Split tests file
 - Fixed and nullable functions
 - Able to set or remove config from system config
+
+## 1.0.4
+- Fixed format classes and files
