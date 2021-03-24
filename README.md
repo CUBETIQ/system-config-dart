@@ -1,5 +1,7 @@
 # Dart Configurable Environment
 
+[![Pub](https://img.shields.io/pub/v/configurable.svg)](https://pub.dartlang.org/packages/configurable)
+
 - [x] Allow to get property from env file
 - [x] Cache property for runtime
 - [x] Dotenv file support (use DotenvConfigurationProvider)
