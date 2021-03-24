@@ -1,4 +1,4 @@
-import 'package:configurable/configurable.dart' show getConfigOrNull;
+import 'package:configurable/configurable.dart' show getConfigOrNull, hasConfigkey;
 import 'package:configurable/dotenv_configuration_provider.dart';
 import 'package:configurable/system_config.dart';
 import 'package:test/test.dart';
@@ -33,6 +33,7 @@ void main() {
     var result = getConfigOrNull(key, defaultValue: value);
 
     expect(value, equals(result));
+    expect(true, equals(hasConfigkey(key)));
     expect(value, equals(getConfigOrNull(key)));
   });
 }
