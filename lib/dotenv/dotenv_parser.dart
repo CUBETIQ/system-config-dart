@@ -1,5 +1,9 @@
 part of dotenv;
 
+/// Dotenv Parser
+///
+/// @author sombochea
+/// @since 1.0.0
 class DotenvParser {
   static const _singleQuot = "'";
   static const _keyword = 'export';
@@ -8,9 +12,10 @@ class DotenvParser {
   static final _surroundQuotes = RegExp(r'''^(['"])(.*)\1$''');
   static final _bashVar = RegExp(r'(?:\\)?(\$)(?:{)?([a-zA-Z_][\w]*)+(?:})?');
 
-  // constructor for parser
+  /// constructor for parser
   const DotenvParser();
 
+  /// Parse the env lines into map values and return it back
   Map<String, String> parse(Iterable<String> lines) {
     var out = <String, String>{};
     lines.forEach((line) {
@@ -73,11 +78,14 @@ class DotenvParser {
   @visibleForTesting
   String swallow(String line) => line.replaceAll(_keyword, '').trim();
 
+  /// Check key is valid or not
   bool _isValid(String s) => s.isNotEmpty && s.contains('=');
 
+  /// Has key in map values
   bool _has(Map<String, String> map, String key) =>
       map.containsKey(key) && map[key] != null;
 
+  /// Try to check on platform env
   String? _tryPlatformEnv(String key) {
     if (!_has(Platform.environment, key)) {
       return '';

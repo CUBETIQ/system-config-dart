@@ -5,7 +5,7 @@ void main() {
   test('just call env', () {
     load();
   
-    var result = env['app.name'];
+    var result = env['app.title'];
 
     expect('CUBETIQ Solution', equals(result));
   });

@@ -1,19 +1,25 @@
 import 'package:configurable/configuration_provider.dart';
+import 'package:configurable/mutable_configurable_provider.dart';
 import 'package:configurable/simple_configuration_provider.dart';
 
+/// System Configuration Static Functions
+///
+/// @author sombochea
+/// @since 1.0.0
 class SystemConfig {
-  static ConfigurationProvider? provider;
+  static ConfigurationProvider? _provider;
 
+  /// Set configuration provider
   static void setProvider(ConfigurationProvider provider) {
-    SystemConfig.provider = provider;
+    _provider = provider;
   }
 
   static ConfigurationProvider getProvider() {
-    if (provider == null) {
+    if (_provider == null) {
       setProvider(SimpleConfigurationProvider());
     }
 
-    return provider!;
+    return _provider!;
   }
 
   static String get(String key, {String? defaultValue}) {
@@ -25,4 +31,22 @@ class SystemConfig {
   }
 
   static bool containsKey(String key) => getProvider().containsKey(key);
+
+  /// Convert to mutable configuration provider
+  static MutableConfigurationProvider _getMutableConfigurationProvider() {
+    if (_provider is MutableConfigurationProvider) {
+      return (_provider as MutableConfigurationProvider);
+    } else {
+      throw Exception(
+          'Error cannot use mutable functions without mutable configuration provider!');
+    }
+  }
+
+  static void set(String key, String? value) {
+    _getMutableConfigurationProvider().set(key, value);
+  }
+
+  static void setAll(Map<String, String?> values) {
+    _getMutableConfigurationProvider().setAll(values);
+  }
 }
