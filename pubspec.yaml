@@ -1,6 +1,6 @@
 name: configurable
 description: System Configuration and Dotenv Environment for Dart and Flutter
-version: 1.0.1
+version: 1.0.2
 homepage: https://github.com/CUBETIQ/system-config-dart
 repository: https://github.com/CUBETIQ/system-config-dart.git
 
@@ -11,5 +11,5 @@ dependencies:
   meta: ^1.3.0
 
 dev_dependencies:
-  pedantic: ^1.9.0
+  pedantic: ^1.11.0
   test: ^1.16.8
