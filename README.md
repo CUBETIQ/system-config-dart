@@ -9,6 +9,9 @@
 - [x] Support nullsafety (dart 2.12.2+)
 - [x] Custom configuration provider
 
+# Issue
+- Flutter app not support for dotenv (.env) when run on devices
+
 # Example
 
 ```dart
