@@ -21,6 +21,6 @@ class SystemConfig {
   }
 
   static String? getOrNull(String key, {String? defaultValue}) {
-    return getProvider().getOrNull(key);
+    return getProvider().getOrNull(key, defaultValue: defaultValue);
   }
 }
