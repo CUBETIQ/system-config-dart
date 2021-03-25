@@ -19,3 +19,7 @@
 
 ## 1.0.4
 - Fixed format classes and files
+
+## 1.0.5
+- Fixed simple provider for final configs variable
+- Fixed setAll function that set itself, in simple provider

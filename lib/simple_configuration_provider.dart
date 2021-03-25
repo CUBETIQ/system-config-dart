@@ -5,15 +5,15 @@ import 'package:configurable/mutable_configurable_provider.dart';
 /// @author sombochea
 /// @since 1.0.0
 class SimpleConfigurationProvider implements MutableConfigurationProvider {
-  Map<String, String?> configs = {};
+  final Map<String, String?> _configs = {};
 
   @override
   String? getOrNull(String key, {String? defaultValue}) {
-    var value = configs[key];
+    var value = _configs[key];
 
     /// if value is null, then set the default value and return it back
     if (value == null) {
-      configs[key] = defaultValue;
+      _configs[key] = defaultValue;
       return defaultValue;
     }
 
@@ -22,26 +22,26 @@ class SimpleConfigurationProvider implements MutableConfigurationProvider {
 
   @override
   bool containsKey(String key) {
-    return configs.containsKey(key);
+    return _configs.containsKey(key);
   }
 
   @override
   void set(String key, String? value) {
-    configs[key] = value;
+    _configs[key] = value;
   }
 
   @override
   void remove(String key) {
-    configs.remove(key);
+    _configs.remove(key);
   }
 
   @override
   void removeAll() {
-    configs.clear();
+    _configs.clear();
   }
 
   @override
   void setAll(Map<String, String?> configs) {
-    configs.addAll(configs);
+    _configs.addAll(configs);
   }
 }
