@@ -27,3 +27,4 @@
 ## 1.0.6
 - Add async function support
 - Add functions for set and remove for system config and file functions
+- Add TextFormatter for format the string with args
