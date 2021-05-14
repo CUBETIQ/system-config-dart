@@ -8,9 +8,13 @@
 - [x] Support functions (getConfig, getConfigOrNull, hasConfigKey, setConfig)
 - [x] Support nullsafety (dart 2.12.2+)
 - [x] Custom configuration provider
+- [x] Add Async functions support
 
 # Issue
-- Flutter app not support for dotenv (.env) when run on devices
+- Flutter app not support for dotenv (.env) when run on devices (because of runtime in device)
+
+# Resolution
+- Flutter app can be use persistence storage like SharedPreference or FlutterSecureStorage to implement the configuration provider
 
 # Example
 

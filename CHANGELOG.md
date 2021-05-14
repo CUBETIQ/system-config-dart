@@ -23,3 +23,7 @@
 ## 1.0.5
 - Fixed simple provider for final configs variable
 - Fixed setAll function that set itself, in simple provider
+
+## 1.0.6
+- Add async function support
+- Add functions for set and remove for system config and file functions

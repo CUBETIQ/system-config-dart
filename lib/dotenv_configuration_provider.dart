@@ -5,7 +5,7 @@ import 'package:configurable/dotenv/dotenv.dart' show env, load;
 ///
 /// @author sombochea
 /// @since 1.0.0
-class DotenvConfigurationProvider implements ConfigurationProvider {
+class DotenvConfigurationProvider extends ConfigurationProvider {
   /// default constructor to load the platform environment
   DotenvConfigurationProvider() {
     load();
