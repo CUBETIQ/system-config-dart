@@ -28,3 +28,6 @@
 - Add async function support
 - Add functions for set and remove for system config and file functions
 - Add TextFormatter for format the string with args
+
+## 1.0.7
+- Removed example "example_flutter_secure_storage_provider.dart"
