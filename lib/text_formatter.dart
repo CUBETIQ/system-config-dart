@@ -10,22 +10,40 @@ class TextFormatter {
       return null;
     }
 
+    if (args.isEmpty) {
+      return text;
+    }
+
     var msg = text;
     args.asMap().forEach((index, element) {
-      msg = msg?.replaceAll('{$index}', element);
+      var _replaced = '';
+      if (element != null) {
+        _replaced = element.toString();
+      }
+
+      msg = msg?.replaceAll('{$index}', _replaced);
     });
 
     return msg;
   }
 
-  String? decorate(Map<String, dynamic> args) {
+  String? decorate(Map<String, dynamic> params) {
     if (text == null) {
       return null;
     }
 
+    if (params.isEmpty) {
+      return text;
+    }
+
     var msg = text;
-    args.forEach((index, element) {
-      msg = msg?.replaceAll('{$index}', element);
+    params.forEach((index, element) {
+      var _replaced = '';
+      if (element != null) {
+        _replaced = element.toString();
+      }
+
+      msg = msg?.replaceAll('{$index}', _replaced);
     });
 
     return msg;

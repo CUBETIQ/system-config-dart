@@ -31,3 +31,6 @@
 
 ## 1.0.7
 - Removed example "example_flutter_secure_storage_provider.dart"
+
+## 1.0.8
+- Fixed Text Formatter on dynamic to string
